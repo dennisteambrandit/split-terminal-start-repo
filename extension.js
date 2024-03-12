@@ -35,16 +35,28 @@ function activate(context) {
 }
 
 function splitTerminal() {
-    // Ensure there is an active terminal to split
+    // Ensure there is an active terminal
     if (vscode.window.terminals.length === 0) {
-        const terminal = vscode.window.createTerminal();
-        terminal.show();
+        vscode.window.createTerminal().show();
     }
-    
-    // Wait a short period to ensure the terminal is ready
+
+    // Split the terminal
     setTimeout(() => {
-        vscode.commands.executeCommand('workbench.action.terminal.split');
-    }, 1000); // Adjust the delay as necessary
+        vscode.commands.executeCommand('workbench.action.terminal.split').then(() => {
+            // Focus on the new split terminal and run a command from an environment variable
+            const newTerminalIndex = vscode.window.terminals.length - 1;
+            const newTerminal = vscode.window.terminals[newTerminalIndex];
+            newTerminal.show(); // Brings the focus to the new terminal
+            
+            // Retrieve the command from an environment variable
+            const commandToRun = process.env.MY_START_COMMAND;
+            if (commandToRun) {
+                newTerminal.sendText(commandToRun);
+            } else {
+                console.error('Environment variable MY_START_COMMAND is not set.');
+            }
+        });
+    }, 1000); // Adjust delay as needed for terminal readiness
 }
 
 // This method is called when your extension is deactivated
