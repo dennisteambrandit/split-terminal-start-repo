@@ -14,6 +14,9 @@
     "workspaceContains:**/*"
   ],
   "main": "./extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/briannicholls/split-terminal.git"},
   "contributes": {
     "commands": [
       {
