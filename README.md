@@ -6,8 +6,7 @@ This is a simple VSC extension to automatically split your terminal to two windo
 
 When opening VSC, your terminal panes should look like this:
 
-\!\[Split Terminals\]\(images/split-terminals.png\)
-
+![Split Terminals](./images/split-terminals.png)
 
 ## Release Notes
 
