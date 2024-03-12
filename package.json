@@ -1,6 +1,7 @@
 {
   "name": "split-terminal",
   "displayName": "Split Terminal",
+  "publisher": "BrianNicholls",
   "description": "Allows splitting of your terminal windows by default",
   "version": "0.0.1",
   "engines": {
